@@ -22,4 +22,8 @@ class Post extends Model
     public function getRandomNumber() {
         return 4;
     }
+
+    public function comments() {
+        return $this->hasMany(Comment::class);
+    }
 }

@@ -13,4 +13,23 @@
       <span>No Comments</span>
     @endforelse
   </ul>
+
+  <form action="/posts/{{ $post->id }}/comments" method="POST">
+    @csrf
+    <div class="form-group">
+      <label for="post-content">Add Comment</label>
+      <textarea 
+        name="body" 
+        id="post-content" 
+        class="form-control  
+        @error('body')is-invalid @enderror" 
+        rows="2" 
+        placeholder="Post content"></textarea>
+      @error('body')
+        <div class="alert alert-danger">{{ $message }}</div>
+      @enderror
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
 @endsection

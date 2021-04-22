@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\AuthController;
 use App\Models\Post;
 
 /*
@@ -25,4 +26,10 @@ Route::post('/posts', [PostController::class, 'store']);
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('post');
 
 Route::post('/posts/{post}/comments', [CommentController::class, 'store']);
+
+Route::get('/register', [AuthController::class, 'getRegisterForm']);
+
+Route::post('/register', [AuthController::class, 'register']);
+
+// Route::get('/login', [AuthController::class, 'getLoginForm']);
 

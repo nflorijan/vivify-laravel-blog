@@ -18,12 +18,21 @@
           <strong> Username: {{ auth()->user()->name }} </strong>
         </li>
       @endif
+      @if (auth()->check())
+        <li class="nav-item">
+          <form action="/logout" method="POST">
+            @csrf
+            <button class="btn-primary">Log out</button>
+          </form>
+        </li>
+      @endif
     </ul>
   </div>
 </nav>
 <style>
   .navbar-nav {
     flex-direction: row !important;
+    align-items: center;
   }
   .nav-item {
     display: flex;

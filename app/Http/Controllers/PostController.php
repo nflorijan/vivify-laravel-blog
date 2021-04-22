@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreatePostRequest;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\User;
 use App\Models\Comment;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
@@ -30,8 +31,8 @@ class PostController extends Controller
     public function store(CreatePostRequest $request) {
 
        $data = $request->validated();
-        
-        Post::create($data);
+       $newPost = auth()->user()->posts()->create($data);
+
         return redirect('/posts');
     }
 }

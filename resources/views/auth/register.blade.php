@@ -6,7 +6,6 @@
   <h2>Register Form</h2>
 
   <form action="/register" method="POST">
-    <form action="/posts" method="POST">
       @csrf
       <div class="form-group">
         <label for="post-name">Name</label>

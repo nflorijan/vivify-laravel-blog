@@ -48,6 +48,4 @@ class AuthController extends Controller
 
         return view('auth.login', ['invalid_credentials' => true]);
     }
-
-
 }

@@ -7,9 +7,6 @@
       <li class="nav-item">
         <a class="nav-link" href="/posts">All posts</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/posts/create">Create post</a>
-      </li>
       @if (!auth()->check())
         <li class="nav-item">
           <a class="nav-link" href="/login">Sign in</a>
@@ -19,6 +16,9 @@
         </li>
       @endif
       @if (auth()->check())
+        <li class="nav-item">
+          <a class="nav-link" href="/posts/create">Create post</a>
+        </li>
         <li class="nav-item">
           <strong> Username: {{ auth()->user()->name }} </strong>
         </li>
@@ -41,6 +41,6 @@
     display: flex;
     align-items: center;
     margin-left: 15px;
-    text-transform: capitalize
+    text-transform: capitalize;
   }
 </style>

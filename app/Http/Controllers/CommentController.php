@@ -8,6 +8,10 @@ use App\Models\Post;
 
 class CommentController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     public function store(Post $post, CreateCommentRequest $request) {
         $data = $request->validated();
 

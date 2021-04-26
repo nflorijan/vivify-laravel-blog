@@ -4,7 +4,7 @@
 
 @section('content')
   <h2>{{ $post->title }}</h2>
-  <span>Author: {{ $post->user->name }}</span>
+  <span>Author: <a href="{{ route('user', ['user' => $post->user->id]) }}"> {{ $post->user->name }}</a></span>
   <hr/>
   <p>{{ $post->body }}</p>
   <h4>Comments:</h4>
@@ -20,12 +20,12 @@
     @csrf
     <div class="form-group">
       <label for="post-content">Add Comment</label>
-      <textarea 
-        name="body" 
-        id="post-content" 
-        class="form-control  
-        @error('body')is-invalid @enderror" 
-        rows="2" 
+      <textarea
+        name="body"
+        id="post-content"
+        class="form-control
+        @error('body')is-invalid @enderror"
+        rows="2"
         placeholder="Post content"></textarea>
       @error('body')
         <div class="alert alert-danger">{{ $message }}</div>

@@ -21,6 +21,7 @@ class AuthController extends Controller
         $newUser = User::create($data);
 
         auth()->login($newUser);
+
         return redirect('/posts');
     }
 

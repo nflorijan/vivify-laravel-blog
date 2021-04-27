@@ -9,6 +9,9 @@
       <li class="list-group-item">
         <a href="{{ route('post', ['post' => $post->id]) }}">{{ $post->title }} ({{ $post->comments->count() }})</a>
         <p>{{ Str::limit($post->body, 80, '...') }}</p>
+        @foreach ($post->tags as $tag)
+            <a class="badge btn-secondary" href="{{ route('tag', ['tag' => $tag]) }}">{{ $tag->name}}</a>
+        @endforeach
       </li>
     @endforeach
   </ul>

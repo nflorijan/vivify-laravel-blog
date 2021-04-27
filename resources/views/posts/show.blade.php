@@ -5,6 +5,12 @@
 @section('content')
   <h2>{{ $post->title }}</h2>
   <span>Author: <a href="{{ route('user', ['user' => $post->user->id]) }}"> {{ $post->user->name }}</a></span>
+  <div>
+    <strong>Tags: </strong>
+      @foreach ($post->tags as $tag)
+        <a class="btn btn-secondary" href="{{ route('tag', ['tag' => $tag]) }}">{{ $tag->name}}</a>
+      @endforeach
+  </div>
   <hr/>
   <p>{{ $post->body }}</p>
   <h4>Comments:</h4>

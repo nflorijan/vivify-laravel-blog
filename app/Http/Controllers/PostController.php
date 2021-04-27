@@ -11,8 +11,8 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class PostController extends Controller
 {
-    public function index() {
-        $posts = Post::published()->with('comments')->paginate(8);
+    public function index(Request $request) {
+        $posts = Post::published()->with('comments', 'tags')->paginate($request->query('perPage', 8));
         return view('posts.index', compact('posts'));
     }
 
@@ -21,6 +21,7 @@ class PostController extends Controller
            throw new ModelNotFoundException();
         }
 
+        $post->load(['comments', 'tags', 'author', 'author.posts']);
         return view('posts.show', compact('post'));
     }
 

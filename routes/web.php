@@ -5,6 +5,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TagController;
 use App\Models\Post;
 
 /*
@@ -38,3 +39,5 @@ Route::group(['middleware' => 'guest'], function () {
 Route::post('/logout', [AuthController::class, 'logout'])->middleware(('auth'));
 
 Route::get('/users/{user}', [UserController::class, 'show'])->name('user');
+
+Route::get('/tags/{tag}', [TagController::class, 'show'])->name('tag');

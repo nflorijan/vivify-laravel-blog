@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Comment;
+use App\Models\Tag;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class PostController extends Controller
@@ -26,13 +27,16 @@ class PostController extends Controller
     }
 
     public function create() {
-        return view('posts.create');
+        $tags = Tag::all();
+        return view('posts.create', compact('tags'));
     }
 
     public function store(CreatePostRequest $request) {
 
        $data = $request->validated();
        $newPost = auth()->user()->posts()->create($data);
+
+       $newPost->tags()->sync($data['tags']);
 
         return redirect('/posts');
     }

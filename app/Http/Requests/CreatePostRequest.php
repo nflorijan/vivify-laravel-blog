@@ -26,7 +26,9 @@ class CreatePostRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'body' => ['required', 'string', 'max:10000'],
-            'is_published' => 'sometimes'
+            'is_published' => 'sometimes',
+            'tags' => 'array',
+            'tags.*' => 'integer|exists:tags,id'
         ];
     }
 

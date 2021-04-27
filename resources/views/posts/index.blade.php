@@ -3,12 +3,21 @@
 @section('title', 'Vivify Blog')
 
 @section('content')
-    <h2>Posts</h2>
-    <ul>
-        @foreach ($posts as $post)
-    <li><a href="{{ route('post', ['post' => $post->id]) }}">{{ $post->title }} ({{ $post->comments->count() }})</a></li>
-        @endforeach
-    </ul>
+  <h2>Posts</h2>
+  <ul class="list-group list-group-flush">
+    @foreach ($posts as $post)
+      <li class="list-group-item">
+        <a href="{{ route('post', ['post' => $post->id]) }}">{{ $post->title }} ({{ $post->comments->count() }})</a>
+        <p>{{ Str::limit($post->body, 80, '...') }}</p>
+      </li>
+    @endforeach
+  </ul>
+  <div>
+    {{ $posts->links() }}
+  </div>
 @endsection
-
-
+<style>
+  svg {
+    width: 20px;
+  }
+</style>

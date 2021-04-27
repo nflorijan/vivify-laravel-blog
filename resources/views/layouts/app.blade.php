@@ -12,6 +12,7 @@
         <style>
             body {
                 font-family: 'Nunito', sans-serif;
+                padding-bottom: 50px;
             }
         </style>
     </head>

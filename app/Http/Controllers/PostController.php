@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 class PostController extends Controller
 {
     public function index() {
-        $posts = Post::published()->with('comments')->get();
+        $posts = Post::published()->with('comments')->paginate(8);
         return view('posts.index', compact('posts'));
     }
 

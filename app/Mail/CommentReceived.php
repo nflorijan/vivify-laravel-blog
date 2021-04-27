@@ -34,7 +34,8 @@ class CommentReceived extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.test')->subject('Test email')
+        return $this->view('emails.test')
+                    ->subject('Test email')
                     ->with([
                         'commentAuthor' => $this->commentAuthor->name,
                         'comment' => $this->comment->body,
